@@ -6,9 +6,10 @@ import * as React from "react";
 import "semantic-ui-css-offline/semantic.min.css";
 
 import { Application } from "./application";
+import { Questionnaire } from "./components/questionnaire";
 
 function renderApp(): React.ReactElement {
-  return <p>nothing here yet</p>;
+  return <Questionnaire />;
 }
 
 async function main(): Promise<void> {

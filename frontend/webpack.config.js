@@ -28,6 +28,21 @@ module.exports = {
         },
       },
       {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader",
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: {modules: true}},
+          "sass-loader",
+        ],
+      },
+      {
         test: /\.js$/,
         enforce: "pre",
         loader: "source-map-loader",
@@ -38,22 +53,6 @@ module.exports = {
         options: {
           configFile: path.join(__dirname, "tsconfig.json"),
         },
-      },
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          "css-loader"
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          "style-loader",
-          {loader: "css-loader", options: {modules: true}},
-          // "resolve-url-loader",
-          "sass-loader",
-        ],
       },
     ],
   },

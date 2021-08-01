@@ -1,0 +1,19 @@
+.container {
+  height: 100%;
+}
+
+.content {
+  height: 60%;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.content__header,
+.content__footer {
+  flex-grow: 0;
+}
+
+.content__body {
+  flex-grow: 1;
+}

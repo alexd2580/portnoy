@@ -1,1 +1,1 @@
-web: node build-and-host.mjs
+web: node host-via-express.mjs
