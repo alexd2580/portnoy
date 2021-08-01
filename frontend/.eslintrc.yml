@@ -1,0 +1,68 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - "eslint:recommended"
+  - "plugin:@typescript-eslint/eslint-recommended"
+  - "plugin:monorepo/recommended"
+  - "plugin:jest/recommended"
+  - "plugin:node/recommended"
+  - "plugin:import/typescript"
+  - "plugin:prettier/recommended"
+  - "plugin:react/recommended"
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: "module"
+plugins:
+  - "@typescript-eslint"
+  - "monorepo"
+  - "jest"
+  - "node"
+  - "import"
+  - "filenames"
+  - "prettier"
+  - "react"
+settings:
+  react:
+    version: detect
+rules:
+  # The typescript rule is used instead.
+  semi: "off"
+  "@typescript-eslint/explicit-function-return-type":
+    - "error"
+    - allowExpressions: true
+  # The typescript rule is used instead.
+  no-unused-vars: "off"
+  "@typescript-eslint/no-unused-vars":
+    - "error"
+    - argsIgnorePattern: "^_"
+      varsIgnorePattern: "^_"
+  # Error on any.
+  "@typescript-eslint/no-explicit-any": "error"
+  # Needed because this plugin detects typescript as ES6+.
+  node/no-unsupported-features/es-syntax:
+    - "error"
+    - ignores:
+        - "modules"
+  # Cannot be used because we're using a monorepo.
+  node/no-missing-import: "off"
+  # We're generally not published yet, so this can't be used.
+  node/no-unpublished-import: "off"
+  no-restricted-imports:
+    - "error"
+    - patterns:
+        # Don't allow installing from `dist/` directories as vscode would like to do.
+        - "**/dist"
+  # No console.log. Use spawn-common's debug instead.
+  no-console:
+    - "error"
+    - allow:
+        - warn
+        - error
+  # Enforce filenames.
+  filenames/no-index: "error"
+  filenames/match-regex:
+    - "error"
+    - "^([a-z0-9-.]+)$"
+  prettier/prettier: "error"
