@@ -1,5 +1,6 @@
 import { configure } from "tsdi";
 
+import { ApiService } from "./services/api";
 import { QuestionnaireService } from "./services/questionnaire";
 
 import { Questionnaire } from "./components/questionnaire";
